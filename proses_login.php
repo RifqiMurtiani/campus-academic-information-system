@@ -9,18 +9,19 @@ if(isset($_POST["login"])){
             if($search > 0){
                 $data = mysqli_fetch_assoc($sql);
                 if($data['role']==1){
+                    //admin
                     $_SESSION['username'] = $username;
                     $_SESSION['role'] = 1;
                     header("location:dashboard_admin.html");
                 }else if($data['role']==2){
-            
+                    //dosen
                     $_SESSION['username'] = $username;
                     $_SESSION['role'] = 2;
             
                     header("location:dashboard_dosen.html");
                 }
                 }else if($data['role']==3){
-            
+                    //mahasiswa
                     $_SESSION['username'] = $username;
                     $_SESSION['role'] = 3;
             
