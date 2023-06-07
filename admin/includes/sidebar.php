@@ -62,18 +62,18 @@
             <i class="bx bx-pie-chart-alt-2"></i>
             <span class="link_name">Analytics</span>
           </a>
-          <ul class="sub-menu blank">
+          <!-- <ul class="sub-menu blank">
             <li><a class="link_name" href="#">Analytics</a></li>
-          </ul>
+          </ul> -->
         </li>
         <li>
           <a href="#">
             <i class="bx bx-line-chart"></i>
             <span class="link_name">Chart</span>
           </a>
-          <ul class="sub-menu blank">
+          <!-- <ul class="sub-menu blank">
             <li><a class="link_name" href="#">Chart</a></li>
-          </ul>
+          </ul> -->
         </li>
         <li>
           <div class="iocn-link">
