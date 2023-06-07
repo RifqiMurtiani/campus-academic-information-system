@@ -5,8 +5,17 @@
   color: blue;
   transition: all 0.4s ease;
 }
-
 .sidebar.close .nav-links li a .active {
+  opacity: 0;
+  pointer-events: none;
+}
+  .sidebar .nav-links li a .inactive {
+  font-size: 18px;
+  font-weight: 400;
+  color: #696969;
+  transition: all 0.4s ease;
+}
+.sidebar.close .nav-links li a .inactive {
   opacity: 0;
   pointer-events: none;
 }
@@ -18,10 +27,10 @@
         <span class="logo_name">CodingLab</span>
       </div>
       <ul class="nav-links">
-        <li class="active">
+        <li class="">
           <a href="#">
             <i class="bx bx-grid-alt"></i>
-            <span class=" <?= $page == 'dashboard.php' ? 'active' : 'link_name' ?>">Home</span>
+            <span class=" <?= $page == 'dashboard.php' ? 'active' : 'inactive' ?>">Home</span>
           </a>
           <!-- <ul class="sub-menu blank">
             <li><a class="" href="dashboard_admin.php">Home</a></li>
@@ -36,10 +45,23 @@
             <i class="bx bxs-chevron-down arrow"></i>
           </div>
           <ul class="sub-menu">
-            <li><a class="link_name" href="#">Master Data</a></li>
-            <li><a class=" <?= $page == 'mahasiswa.php' ? 'active' : 'link_name' ?>" href="mahasiswa.php">Mahasiswa</a></li>
-            <li><a href="#">Dosen</a></li>
-            <li><a href="#">Admin</a></li>
+            <!-- <li><a class="link_name" href="#">Master Data</a></li> -->
+            <li>
+              <a   href="mahasiswa.php">
+                <span class="<?= $page == 'mahasiswa.php' ? 'active' : 'inactive' ?>">Mahasiswa</span>
+              </a>
+            </li>
+            <li>
+              <a   href="mahasiswa.php">
+                <span class="<?= $page == '.php' ? 'active' : 'inactive' ?>">Dosen</span>
+              </a>
+            </li>
+            <li>
+              <a   href="mahasiswa.php">
+                <span class="<?= $page == '.php' ? 'active' : 'inactive' ?>">Admin</span>
+              </a>
+            </li>
+            
           </ul>
         </li>
         <li>
