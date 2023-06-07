@@ -7,7 +7,7 @@ include "koneksi.php";
   <head>
     <meta charset="UTF-8" />
     <title>Drop Down Sidebar Menu | CodingLab</title>
-    <link rel="stylesheet" href="dashboard_style.css" />
+    <link rel="stylesheet" href="admin\style\mahasiswa_style.css" />
     <link rel="stylesheet" href="admin\style\mhs.css" />
     <link
       rel="stylesheet"
