@@ -2,9 +2,9 @@
 session_start();
 include 'koneksi.php';
 if(isset($_POST["login"])){
-    $user = $_POST['username'];    
+    $username = $_POST['username'];    
     $password = $_POST['password'];
-        $sql = mysqli_query($conn, "SELECT * FROM user WHERE username = '$user' && password = '$password'");
+        $sql = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username' && password = '$password'");
         $search = mysqli_num_rows($sql);
         // $data = mysqli_fetch_assoc($sql);
         // echo $data['role'];
@@ -14,7 +14,7 @@ if(isset($_POST["login"])){
                     //admin
                     $_SESSION['username'] = $username;
                     $_SESSION['role'] = 1;
-                    header("location:dashboar.html");
+                    header("location:mahasiswa.php");
                 }else if($data['role']==2){
                     //dosen
                     $_SESSION['username'] = $username;
