@@ -1,1 +1,0 @@
-# campus-academic-information-system
