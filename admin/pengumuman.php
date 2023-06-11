@@ -45,6 +45,11 @@ if (isset($showmsg)) {
     <div class="container mt-3 col-4">
         <table class="table">
             <thead>
+            <?php
+                $no = 1;
+                $dok = mysqli_query($conn, "SELECT * FROM dokumen");
+                while ($data = mysqli_fetch_array($dok)) :
+                ?>
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">File</th>
@@ -52,11 +57,7 @@ if (isset($showmsg)) {
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <?php
-                $no = 1;
-                $dok = mysqli_query($conn, "SELECT * FROM dokumen");
-                while ($data = mysqli_fetch_array($dok)) :
-                ?>
+                
                     <tr>
                         <td data-title="No"><?= $no++ ?></td>
                         <td data-title="NIM"><?= $data['file'] ?></td>
@@ -69,22 +70,22 @@ if (isset($showmsg)) {
                     </tr>
                     <!-- Modal -->
                     <div class="modal fade" id="hapus<?= $data['id_dokumen'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">PERINGATAN !</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Yakin ingin menghapus data <?= $data['file'] ?>?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                                                <a href="controller\up_pengumuman.php?hapus=<?= $data['id_dokumen']; ?>" class="btn btn-danger mb-2">Hapus</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">PERINGATAN !</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
+                                <div class="modal-body">
+                                    Yakin ingin menghapus data <?= $data['file'] ?>?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                                    <a href="controller\up_pengumuman.php?hapus=<?= $data['id_dokumen']; ?>" class="btn btn-danger mb-2">Hapus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <?php endwhile; ?>
             </tbody>
         </table>
