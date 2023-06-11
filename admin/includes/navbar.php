@@ -1,26 +1,30 @@
 <!--Navbar -->
+<?php $page = $_SERVER['REQUEST_URI']; ?>
+
 <nav class="navbar navbar-expand-lg bg-info shadow ">
   <div class="container ">
-    <a class="navbar-brand" href="home_admin.php">SIAKAD</a>
+    <a class="navbar-brand" href="home_admin.php">SIAKAD </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="home_admin.php">Home</a>
+          <a <?php if ($_SERVER['SCRIPT_NAME'] == "/admin/home_admin.php") { ?> class="nav-link active" <?php   } else {  ?> class="nav-link" <?php } ?> aria-current="page" href="home_admin.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a <?php if ($_SERVER['SCRIPT_NAME'] == "/admin/mahasiswa.php") { ?> class="nav-link dropdown-toggle active" <?php   } else {  ?> class="nav-link dropdown-toggle" <?php } ?> href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Data Master
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="mahasiswa.php">Mahasiswa</a></li>
             <li><a class="dropdown-item" href="#">Dosen</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
