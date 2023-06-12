@@ -45,11 +45,6 @@ if (isset($showmsg)) {
     <div class="container mt-3 col-4">
         <table class="table">
             <thead>
-            <?php
-                $no = 1;
-                $dok = mysqli_query($conn, "SELECT * FROM dokumen");
-                while ($data = mysqli_fetch_array($dok)) :
-                ?>
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">File</th>
@@ -57,6 +52,11 @@ if (isset($showmsg)) {
                 </tr>
             </thead>
             <tbody class="table-group-divider">
+            <?php
+                $no = 1;
+                $dok = mysqli_query($conn, "SELECT * FROM dokumen");
+                while ($data = mysqli_fetch_array($dok)) :
+                ?>
                 
                     <tr>
                         <td data-title="No"><?= $no++ ?></td>

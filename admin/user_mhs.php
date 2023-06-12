@@ -42,7 +42,7 @@ if (isset($showmsg)) {
                     <div class="col-md-3">
                         <label for="validationCustom04" class="form-label">Nama Mahasiswa</label>
                         <select name="nama_mahasiswa" id="select_box" class="form-select" id="validationCustom04" required>
-                            <option  selected disabled value="">Pilih</option>
+                            <option selected disabled value="">Pilih</option>
                             <?php
                             $query = mysqli_query($conn, "SELECT DISTINCT nama_mahasiswa FROM mahasiswa,user WHERE mahasiswa.nama_mahasiswa NOT IN (SELECT nama FROM user)") or die(mysqli_error($conn));
                             while ($data = mysqli_fetch_array($query)) :
@@ -92,26 +92,27 @@ if (isset($showmsg)) {
                         <tbody>
                             <?php
                             $no = 1;
-                            $mhs = mysqli_query($conn, "SELECT * FROM user");
+                            $mhs = mysqli_query($conn, "SELECT * FROM user WHERE role = 3");
                             while ($data = mysqli_fetch_array($mhs)) :
                             ?>
                                 <tr>
                                     <td data-title="No"><?= $no++ ?></td>
                                     <td data-title="Nama"><?= $data['nama'] ?></td>
                                     <td data-title="Username"><?= $data['username'] ?></td>
-                                    <td data-title="Role"><?php 
-                                        if($data['role']==1){
-                                            echo "Admin";
-                                        }elseif($data['role']==2){
-                                            echo "Dosen";
-                                        }elseif($data['role']==3){
-                                            echo "Mahasiswa";
-                                        }else{
-                                            echo "NA";
-                                        }
-                                    ?></td>
+                                    <td data-title="Role"><?php
+                                                            // if ($data['role'] == 1) {
+                                                            // echo "Admin";
+                                                            // } elseif ($data['role'] == 2) {
+                                                            //     echo "Dosen";
+                                                            if ($data['role'] == 3) {
+                                                                echo "mahasiswa";
+                                                            }
+                                                            // } else {
+                                                            //     echo "NA";
+                                                            // }
+                                                            ?></td>
                                     <td data-title="aksi">
-                                        <a href="edit_mhs.php?id=<?= $data['id_user']; ?>" class="btn btn-success text-white mb-2">Edit</a>
+                                        <a href="edit_user_mhs.php?id=<?= $data['id_user']; ?>" class="btn btn-success text-white mb-2">Edit</a>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-danger mb-2" data-bs-toggle="modal" data-bs-target="#hapus<?= $data['id_user'] ?>">
                                             Hapus
@@ -121,7 +122,7 @@ if (isset($showmsg)) {
 
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="hapus<?= $data['id_mahasiswa'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="hapus<?= $data['id_user'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -129,11 +130,11 @@ if (isset($showmsg)) {
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Yakin ingin menghapus data <?= $data['nama_mahasiswa'] ?>?
+                                                Yakin ingin menghapus data <?= $data['nama'] ?>?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                                                <a href="controller\aksi_mhs.php?hapus=<?= $data['id_mahasiswa']; ?>" class="btn btn-danger mb-2">Hapus</a>
+                                                <a href="controller/user_mhs_controller.php?hapus=<?= $data['id_user']; ?>" class="btn btn-danger mb-2">Hapus</a>
                                             </div>
                                         </div>
                                     </div>

@@ -1,3 +1,13 @@
+<?php
+include('../koneksi.php');
+session_start();
+$nama = $_SESSION['user'];
+session_write_close();
+// echo $nama;
+// $user = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE nama_mahasiswa = '$nama'");
+// $r = mysqli_fetch_array($user);
+// echo isset($r['nama_mahasiswa']) ? $r['nama_mahasiswa'] : "takdeee";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +38,7 @@
         }
 
         .card-box:hover .icon i {
-            font-size: 80px;
+            font-size: 70px;
             transition: 1s;
             -webkit-transition: 1s;
         }
@@ -95,54 +105,49 @@
 </head>
 
 <body>
-    <?php include('includes\navbar.php'); ?>
+    <?php include('includes/navbar_mhs.php'); ?>
 
     <div class="container">
+
         <div class="row">
             <div class="col-lg-3 col-sm-6">
                 <div class="card-box bg-blue">
                     <div class="inner">
-                        <h4> Mahasiswa </h4>
+                        <h6> KRS </h6>
                     </div>
                     <div class="icon">
                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                     </div>
-                    <a href="mahasiswa.php" class="card-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="krs_mhs.php" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="card-box bg-red">
+                <div class="card-box bg-green">
                     <div class="inner">
-                        <h4> Akun Mahasiswa </h4>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-users"></i>
-                    </div>
-                    <a href="user_mhs.php" class="card-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card-box bg-blue">
-                    <div class="inner">
-                        <h4> Dosen </h4>
+                        <h6> Ujian </h6>
                     </div>
                     <div class="icon">
                         <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                     </div>
-                    <a href="#" class="card-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="krs_mhs.php" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card-box bg-red">
-                    <div class="inner">
-                        <h4> Akun Dosen </h4>
+            <div class="container mt-5">
+                <h5>Pengumuman</h5>
+                <hr class="hr">
+                </hr>
+                <?php
+                $no = 1;
+                $dok = mysqli_query($conn, "SELECT * FROM dokumen");
+                while ($data = mysqli_fetch_array($dok)) :
+                ?>
+                    <div class="col">
+                        <a href="../download_file.php?filename=<?= $data['file'] ?>"><?= $data['file'] ?></a>
+
                     </div>
-                    <div class="icon">
-                        <i class="fa fa-users"></i>
-                    </div>
-                    <a href="#" class="card-box-footer">Lihat <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
+                <?php endwhile; ?>
             </div>
+
         </div>
     </div>
 </body>
